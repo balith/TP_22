@@ -1,27 +1,34 @@
 
 import random
-
-guess = random.randint(0, 100)
-appreciation = "?"
-nbr = 0
-print("devinez le nombre que je pense(indice il est entre 0 et 100)")
-
-
+nombre_essaie = 0
+print("Choisissait bos nombre minimal et un nombre maximal pour jouer")
+nombremm = int(input("Entrer un nombre minimal:"))
+nombremx = int(input("Entrer un nombre miximal:"))
+nombre_aleatoire = random.randint(nombremm, nombremx)
+print("J'ai choisit un chiffre entre", nombremm, "et", nombremx, "je pense a quoi")
 while True:
-    var = input("quell est votre choice")
-    var = int(var)
-    if var < guess :
-        nbr += 1
-        print("non, je pensais a un notre chiffre, il est plus grand:", var)
+    nbr_essaie = int(input("Entrez un nombre:"))
+    if nbr_essaie < nombre_aleatoire :
+        nombre_essaie = nombre_essaie + 1
+        print("Non, le nombre est plus grande que:", nbr_essaie)
 
-    else :
-        nbr = nbr + 1
-        print("non, je pensai a un notre chiffre, il est plus petit:", var)
-    if var == guess:
-        appreciation ="wow, le nombre etait:"
-        print(appreciation, var, "vous avez assaiye:", nbr)
+    elif nbr_essaie > nombre_essaie:
+        nombre_essaie = nombre_essaie + 1
+        print("Non, le nombre est plus petit que:", nbr_essaie)
 
+    if nbr_essaie == nombre_aleatoire:
 
+        print("Bravo le nombre etait:", nbr_essaie, "Nombre de d'essaie:", nombre_essaie)
+        rejouer = input("Veux tu rejouer? oui/non:")
 
+        if rejouer == "oui" :
+            pass
+            nombre_essaie = 0
+            print("Choisissait bos nombre minimal et un nombre maximal pour jouer")
+            nombremm = int(input("Entrer un nombre minimal:"))
+            nombremx = int(input("Entrer un nombre miximal:"))
+            nombre_aleatoire = random.randint(nombremm, nombremx)
+            print("J'ai choisit un chiffre entre", nombremm, "et", nombremx, "je pense a quoi")
 
-
+        elif rejouer == "non" :
+            break
